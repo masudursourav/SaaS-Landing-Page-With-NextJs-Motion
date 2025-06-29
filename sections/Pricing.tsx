@@ -1,3 +1,6 @@
+"use client";
+import PricingCard from "@/components/PricingCard";
+
 const pricingTiers = [
   {
     title: "Free",
@@ -51,5 +54,34 @@ const pricingTiers = [
 ];
 
 export const Pricing = () => {
-  return null;
+  const handlePlanSelect = (planTitle: string) => {
+    console.log(`Selected plan: ${planTitle}`);
+  };
+
+  return (
+    <section className="py-24">
+      <div className="container">
+        <h2 className="text-center text-3xl md:text-5xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text">
+          Pricing
+        </h2>
+        <p className="text-center text-[22px] leading-[30px] tracking-tight text-[#010D3E] mt-6 max-w-[540px] mx-auto">
+          Free for limited features. Unlock more with our Pro and Business
+        </p>
+        <div className="flex flex-col gap-6 items-center mt-10 lg:flex-row lg:justify-center lg:items-end lg:gap-12">
+          {pricingTiers.map((tier) => (
+            <PricingCard
+              key={tier.title}
+              title={tier.title}
+              monthlyPrice={tier.monthlyPrice}
+              buttonText={tier.buttonText}
+              popular={tier.popular}
+              inverse={tier.inverse}
+              features={tier.features}
+              onButtonClick={() => handlePlanSelect(tier.title)}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
