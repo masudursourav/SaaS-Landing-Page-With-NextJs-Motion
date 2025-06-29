@@ -1,9 +1,10 @@
 import Logo from "@/assets/logosaas.png";
+import Button from "@/components/Button";
 import { ArrowRight, Menu } from "lucide-react";
 import Image from "next/image";
 export const Header = () => {
   return (
-    <header>
+    <header className="sticky top-0 z-50 backdrop-blur-sm bg-transparent">
       <div className="flex items-center justify-center py-3 bg-gray-800 text-white text-sm gap-3">
         <p className="hidden md:block text-white/60">
           Streamline your workflow and boost your productivity.
@@ -34,9 +35,7 @@ export const Header = () => {
               <a href="#" className="hover:text-black">
                 Help
               </a>
-              <button className="bg-black text-white px-4 py-2 rounded-lg font-medium inline-flex align-items justify-center tracking-tight hover:bg-gray-800">
-                Get for free
-              </button>
+              <Button variant="primary">Get for free</Button>
             </nav>
           </div>
         </div>
