@@ -7,6 +7,7 @@ import avatar6 from "@/assets/avatar-6.png";
 import avatar7 from "@/assets/avatar-7.png";
 import avatar8 from "@/assets/avatar-8.png";
 import avatar9 from "@/assets/avatar-9.png";
+import TestimonialCard from "@/components/TestimonialCard";
 
 const testimonials = [
   {
@@ -66,5 +67,72 @@ const testimonials = [
 ];
 
 export const Testimonials = () => {
-  return null;
+  const renderTestimonials = (
+    testimonialsToRender: typeof testimonials,
+    startIndex = 0
+  ) =>
+    testimonialsToRender.map((testimonial, index) => (
+      <TestimonialCard
+        key={startIndex + index}
+        text={testimonial.text}
+        imageSrc={testimonial.imageSrc}
+        name={testimonial.name}
+        username={testimonial.username}
+      />
+    ));
+
+  const renderColumn = (
+    testimonialSlice: typeof testimonials,
+    startIndex: number,
+    key: string
+  ) => (
+    <div key={key} className="flex flex-col gap-6">
+      {renderTestimonials(testimonialSlice, startIndex)}
+    </div>
+  );
+
+  // Testimonial groups
+  const testimonialGroups = [
+    testimonials.slice(0, 3),
+    testimonials.slice(3, 6),
+    testimonials.slice(6, 9),
+  ];
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="container">
+        <div className="text-center max-w-[540px] mx-auto">
+          <div className="text-sm inline-flex border border-[#222]/10 px-3 py-1 rounded-lg tracking-tight">
+            Version 2.0 is here
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text mt-6">
+            What our users say
+          </h2>
+          <p className="text-xl text-[#010D3E] tracking-tight mt-6">
+            From intuitive design to powerful features, our app has become an
+            essential tool for users around the world.
+          </p>
+        </div>
+
+        <div className="mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]">
+          <div className="flex flex-col gap-6 md:hidden">
+            {renderTestimonials(testimonialGroups[0])}
+          </div>
+
+          <div className="hidden md:grid lg:hidden grid-cols-2 gap-6">
+            {testimonialGroups
+              .slice(0, 2)
+              .map((group, index) =>
+                renderColumn(group, index * 3, `tablet-col-${index}`)
+              )}
+          </div>
+          <div className="hidden lg:grid grid-cols-3 gap-6">
+            {testimonialGroups.map((group, index) =>
+              renderColumn(group, index * 3, `desktop-col-${index}`)
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
