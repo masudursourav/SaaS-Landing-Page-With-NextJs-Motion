@@ -1,5 +1,5 @@
 import Logo from "@/assets/logosaas.png";
-import Button from "@/components/Button";
+import Nav from "@/components/Nav";
 import { ArrowRight, Menu } from "lucide-react";
 import Image from "next/image";
 export const Header = () => {
@@ -19,24 +19,7 @@ export const Header = () => {
           <div className="flex items-center justify-between">
             <Image src={Logo} alt="logo" width={40} height={40} />
             <Menu className="w-6 h-6 md:hidden" />
-            <nav className="hidden md:flex gap-6 text-black/60 items-center">
-              <a href="#" className="hover:text-black">
-                About
-              </a>
-              <a href="#" className="hover:text-black">
-                Features
-              </a>
-              <a href="#" className="hover:text-black">
-                Customers
-              </a>
-              <a href="#" className="hover:text-black">
-                Updates
-              </a>
-              <a href="#" className="hover:text-black">
-                Help
-              </a>
-              <Button variant="primary">Get for free</Button>
-            </nav>
+            <Nav />
           </div>
         </div>
       </div>
