@@ -59,7 +59,7 @@ export const Pricing = () => {
   };
 
   return (
-    <section className="py-24">
+    <section className="py-24 bg-white">
       <div className="container">
         <h2 className="text-center text-3xl md:text-5xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text">
           Pricing
