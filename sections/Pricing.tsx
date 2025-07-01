@@ -1,6 +1,5 @@
 "use client";
 import PricingCard from "@/components/PricingCard";
-
 const pricingTiers = [
   {
     title: "Free",
