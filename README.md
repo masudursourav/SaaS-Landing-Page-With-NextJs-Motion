@@ -281,15 +281,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
-## 📞 Support
-
-- 📧 **Email**: support@yourcompany.com
-- 💬 **Discord**: [Join our community](https://discord.gg/yourserver)
-- 🐛 **Issues**: [GitHub Issues](https://github.com/yourusername/saas-landing-page/issues)
-- 📖 **Docs**: [Full Documentation](https://docs.yoursite.com)
-
----
-
 <div align="center">
 
 **⭐ Star this repo if you found it helpful!**
