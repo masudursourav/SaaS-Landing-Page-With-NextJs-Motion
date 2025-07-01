@@ -1,3 +1,4 @@
+"use client";
 import avatar1 from "@/assets/avatar-1.png";
 import avatar2 from "@/assets/avatar-2.png";
 import avatar3 from "@/assets/avatar-3.png";
@@ -8,7 +9,7 @@ import avatar7 from "@/assets/avatar-7.png";
 import avatar8 from "@/assets/avatar-8.png";
 import avatar9 from "@/assets/avatar-9.png";
 import TestimonialCard from "@/components/TestimonialCard";
-
+import { motion } from "framer-motion";
 const testimonials = [
   {
     text: "As a seasoned designer always on the lookout for innovative tools, Framer.com instantly grabbed my attention.",
@@ -84,10 +85,25 @@ export const Testimonials = () => {
   const renderColumn = (
     testimonialSlice: typeof testimonials,
     startIndex: number,
-    key: string
+    key: string,
+    duration: number = 25
   ) => (
-    <div key={key} className="flex flex-col gap-6">
-      {renderTestimonials(testimonialSlice, startIndex)}
+    <div key={key} className="flex flex-col gap-6 overflow-hidden">
+      <motion.div
+        className="flex flex-col gap-6"
+        animate={{
+          translateY: "-50%",
+        }}
+        transition={{
+          duration,
+          ease: "linear",
+          repeat: Infinity,
+          repeatType: "loop",
+        }}
+      >
+        {renderTestimonials(testimonialSlice, startIndex)}
+        {renderTestimonials(testimonialSlice, startIndex)}
+      </motion.div>
     </div>
   );
 
@@ -114,21 +130,45 @@ export const Testimonials = () => {
           </p>
         </div>
 
-        <div className="mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]">
+        <div className="mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] overflow-hidden">
           <div className="flex flex-col gap-6 md:hidden">
-            {renderTestimonials(testimonialGroups[0])}
+            <motion.div
+              className="flex flex-col gap-6"
+              animate={{
+                translateY: "-50%",
+              }}
+              transition={{
+                duration: 40,
+                ease: "linear",
+                repeat: Infinity,
+                repeatType: "loop",
+              }}
+            >
+              {renderTestimonials(testimonialGroups[0])}
+              {renderTestimonials(testimonialGroups[0])}
+            </motion.div>
           </div>
 
           <div className="hidden md:grid lg:hidden grid-cols-2 gap-6">
             {testimonialGroups
               .slice(0, 2)
               .map((group, index) =>
-                renderColumn(group, index * 3, `tablet-col-${index}`)
+                renderColumn(
+                  group,
+                  index * 3,
+                  `tablet-col-${index}`,
+                  45 + index * 8
+                )
               )}
           </div>
           <div className="hidden lg:grid grid-cols-3 gap-6">
             {testimonialGroups.map((group, index) =>
-              renderColumn(group, index * 3, `desktop-col-${index}`)
+              renderColumn(
+                group,
+                index * 3,
+                `desktop-col-${index}`,
+                50 + index * 10
+              )
             )}
           </div>
         </div>
