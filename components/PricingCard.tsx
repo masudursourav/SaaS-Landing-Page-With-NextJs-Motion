@@ -1,8 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import Button from "./Button";
-
 interface PricingCardProps {
   title: string;
   monthlyPrice: number;
@@ -48,9 +48,22 @@ const PricingCard = ({
         <h3 className={titleClasses}>{title}</h3>
         {popular && (
           <div className="text-sm inline-flex border border-white/40 px-4 py-1.5 rounded-xl">
-            <span className="bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF)] text-transparent bg-clip-text font-medium">
+            <motion.span
+              className="bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF)] [background-size:200%] text-transparent bg-clip-text font-medium"
+              animate={{
+                backgroundPositionX: ["0%", "200%"],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: [0.4, 0.0, 0.2, 1],
+                repeatType: "loop",
+                repeatDelay: 0.2,
+              }}
+              initial={{ backgroundPositionX: "0%" }}
+            >
               Most Popular
-            </span>
+            </motion.span>
           </div>
         )}
       </div>
